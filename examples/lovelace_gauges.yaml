@@ -1,0 +1,120 @@
+# Carte unique « Serveur ai » — GPU + CPU/RAM en une seule vue.
+# Entités vérifiées dans le registre HA (integration nvidia_gpu, box "ai").
+#
+# GPU  (device : NVIDIA RTX 6000 Ada Generation on ai)
+#   Utilisation        sensor.serveur_nvidia_rtx_6000
+#   Mémoire (%)        sensor.serveur_nvidia_rtx_6000_2
+#   Mémoire (GiB)      sensor.serveur_nvidia_rtx_6000_3
+#   Mémoire totale     sensor.serveur_nvidia_rtx_6000_4
+#   Puissance (%)      sensor.serveur_nvidia_rtx_6000_5
+#   Ventilateur        sensor.serveur_nvidia_rtx_6000_6
+#   Consommation (W)   sensor.serveur_nvidia_rtx_6000_puissance
+#   Plafond (W)        sensor.serveur_nvidia_rtx_6000_puissance_2
+#   Température (°C)   sensor.serveur_nvidia_rtx_6000_temperature
+#
+# CPU  (device : AMD Ryzen 9 9900X on ai)
+#   Utilisation        sensor.serveur_amd_ryzen_9_9900x
+#   RAM (%)            sensor.serveur_amd_ryzen_9_9900x_2
+#   RAM (GiB)          sensor.serveur_amd_ryzen_9_9900x_3
+#   RAM totale         sensor.serveur_amd_ryzen_9_9900x_4
+#   Température (°C)   sensor.serveur_amd_ryzen_9_9900x_temperature
+
+type: vertical-stack
+title: Serveur ai — GPU & CPU
+cards:
+  # ── GPU : 4 jauges (pourcentages) ──
+  - type: horizontal-stack
+    cards:
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000
+        name: GPU
+        min: 0
+        max: 100
+        needle: true
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000_2
+        name: Mémoire
+        min: 0
+        max: 100
+        needle: true
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000_5
+        name: Puissance
+        min: 0
+        max: 100
+        needle: true
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000_6
+        name: Ventilateur
+        min: 0
+        max: 100
+        needle: true
+
+  # ── GPU : temp + mémo + conso ──
+  - type: horizontal-stack
+    cards:
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000_temperature
+        name: "Temp. GPU (°C)"
+        min: 0
+        max: 90
+        needle: true
+        threshold:
+          - value: 70
+            color: "#ff9800"
+          - value: 85
+            color: "#f44336"
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000_3
+        name: "Mémoire (GiB)"
+        min: 0
+        max: 48
+        needle: true
+        detail:
+          - name: "Total"
+            entity: sensor.serveur_nvidia_rtx_6000_4
+      - type: gauge
+        entity: sensor.serveur_nvidia_rtx_6000_puissance
+        name: "Conso (W)"
+        min: 0
+        max: 300
+        needle: true
+        detail:
+          - name: "Plafond"
+            entity: sensor.serveur_nvidia_rtx_6000_puissance_2
+
+  # ── CPU / RAM ──
+  - type: horizontal-stack
+    cards:
+      - type: gauge
+        entity: sensor.serveur_amd_ryzen_9_9900x
+        name: CPU
+        min: 0
+        max: 100
+        needle: true
+      - type: gauge
+        entity: sensor.serveur_amd_ryzen_9_9900x_temperature
+        name: "Temp. CPU (°C)"
+        min: 0
+        max: 100
+        needle: true
+        threshold:
+          - value: 70
+            color: "#ff9800"
+          - value: 85
+            color: "#f44336"
+      - type: gauge
+        entity: sensor.serveur_amd_ryzen_9_9900x_2
+        name: RAM
+        min: 0
+        max: 100
+        needle: true
+      - type: gauge
+        entity: sensor.serveur_amd_ryzen_9_9900x_3
+        name: "RAM (GiB)"
+        min: 0
+        max: 64
+        needle: true
+        detail:
+          - name: "Total"
+            entity: sensor.serveur_amd_ryzen_9_9900x_4

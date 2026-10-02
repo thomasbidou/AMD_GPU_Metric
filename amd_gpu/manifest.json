@@ -1,0 +1,16 @@
+{
+  "domain": "amd_gpu",
+  "name": "AMD GPU Stats",
+  "codeowners": [
+    "@thomasbidou"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/thomasbidou/AMD_GPU_Metric",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/thomasbidou/AMD_GPU_Metric/issues",
+  "requirements": [
+    "aiohttp>=3.9.0"
+  ],
+  "version": "1.0.0"
+}

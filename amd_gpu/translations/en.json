@@ -1,0 +1,64 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "AMD GPU Stats",
+        "description": "Enter the address of the amd-gpu-stats daemon (the box that runs rocm-smi).",
+        "data": {
+          "host": "Host (IP or hostname)",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_reach": "Could not reach the amd-gpu-stats daemon at that address."
+    },
+    "abort": {
+      "already_configured": "This GPU is already configured."
+    }
+  },
+  "sensor": {
+    "gpu_usage": {
+      "name": "GPU usage"
+    },
+    "memory_usage": {
+      "name": "Memory usage"
+    },
+    "memory_used": {
+      "name": "Memory used"
+    },
+    "memory_total": {
+      "name": "Memory total"
+    },
+    "power_draw": {
+      "name": "Power draw"
+    },
+    "power_limit": {
+      "name": "Power limit"
+    },
+    "power_usage": {
+      "name": "Power usage"
+    },
+    "temperature": {
+      "name": "Temperature"
+    },
+    "fan_speed": {
+      "name": "Fan speed"
+    },
+    "cpu_usage": {
+      "name": "CPU usage"
+    },
+    "cpu_temperature": {
+      "name": "CPU temperature"
+    },
+    "ram_usage": {
+      "name": "RAM usage"
+    },
+    "ram_used": {
+      "name": "RAM used"
+    },
+    "ram_total": {
+      "name": "RAM total"
+    }
+  }
+}
