@@ -171,6 +171,12 @@ examples/
   lovelace_gauges.yaml
 ```
 
+## ⚠️ Disclaimer
+
+Ces programmes ont été développés **entièrement avec l'aide d'une IA** (agent
+Hermes / modèles de langage). Le code est fourni **tel quel, sans garantie** —
+vérifiez-le avant de l'exploiter en production.
+
 ## Licence
 
 MIT.
