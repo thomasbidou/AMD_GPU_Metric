@@ -74,6 +74,8 @@ C'est tout — la carte trouve les bons capteurs toute seule. Voir
 [`examples/lovelace_gauges.yaml`](examples/lovelace_gauges.yaml) pour des
 jauge natives en alternative.
 
+![Carte GPU + CPU/RAM (vue complète)](docs/amd-gpu-card.png)
+
 ### Carte GPU seule
 
 Pour n'afficher que le GPU (sans section CPU/RAM), ajoute `section: gpu` :
@@ -84,6 +86,8 @@ title: llm — GPU
 section: gpu
 ```
 
+![Carte GPU seule](docs/amd-gpu-card-gpu.png)
+
 ### Carte CPU/RAM seule
 
 ```yaml
@@ -91,6 +95,8 @@ type: custom:amd-gpu-card
 title: llm — CPU & RAM
 section: cpu
 ```
+
+![Carte CPU/RAM seule](docs/amd-gpu-card-cpu.png)
 
 (`section: all` — défaut — affiche les deux.)
 
