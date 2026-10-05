@@ -63,6 +63,15 @@ resource manuel) et **détecte tes capteurs par leur attribut `amd_gpu_key`**,
 donc elle fonctionne sur n'importe quelle machine et n'importe quel nombre de
 GPU sans hard-coder d'ID d'entité.
 
+**Compatibilité navigateur** : la carte fonctionne sur tous les navigateurs
+récents — Chrome/Edge, Firefox, Safari — **et l'app Android Home Assistant**.
+Elle évite volontairement les *constructable stylesheets* (API absente de
+Firefox < 101 et des WebView Android < 14, qui faisaient échouer l'enregistrement
+du `custom element`) et utilise un `<style>` classique dans le shadow DOM.
+Si tu mets à jour le fichier `amd-gpu-card.js` à la main, **change aussi le
+cache-buster `?v=`** de la ressource Lovelace (HA met `/local/` en cache ~31
+jours) — l'intégration le rafraîchit désormais toute seule au boot.
+
 Pour l'utiliser, pose ça dans une vue :
 
 ```yaml
