@@ -68,9 +68,12 @@ récents — Chrome/Edge, Firefox, Safari — **et l'app Android Home Assistant*
 Elle évite volontairement les *constructable stylesheets* (API absente de
 Firefox < 101 et des WebView Android < 14, qui faisaient échouer l'enregistrement
 du `custom element`) et utilise un `<style>` classique dans le shadow DOM.
-Si tu mets à jour le fichier `amd-gpu-card.js` à la main, **change aussi le
-cache-buster `?v=`** de la ressource Lovelace (HA met `/local/` en cache ~31
-jours) — l'intégration le rafraîchit désormais toute seule au boot.
+Depuis HA 2026.8, le frontend remplace `window.customElements` au boot
+(polyfill `scoped-custom-element-registry`) : la carte se ré-enregistre
+automatiquement dans le bon registre (`defineElement` self-healing) pour éviter
+l'erreur « Erreur de configuration » quand le module charge avant le boot HA
+(home-assistant/frontend#52960).
+Si tu mets à jour le fichier `amd-gpu-card.js` à la main, **change aussi le cache-buster `?v=`** de la ressource Lovelace (HA met `/local/` en cache ~31 jours) — l'intégration le rafraîchit désormais toute seule au boot.
 
 Pour l'utiliser, pose ça dans une vue :
 
